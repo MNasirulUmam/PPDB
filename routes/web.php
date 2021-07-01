@@ -24,3 +24,6 @@ Route::view('login', 'login');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\SiswasController::class, 'index'])->name('index');
+Route::get('/show/{id}', [App\Http\Controllers\SiswasController::class, 'show'])->name('show');
+Route::get('/create-siswa', [App\Http\Controllers\SiswasController::class, 'create'])->name('create');
