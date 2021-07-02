@@ -27,3 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', [App\Http\Controllers\SiswasController::class, 'index'])->name('index');
 Route::get('/show/{id}', [App\Http\Controllers\SiswasController::class, 'show'])->name('show');
 Route::get('/create-siswa', [App\Http\Controllers\SiswasController::class, 'create'])->name('create');
+Route::post('/add-siswa', [App\Http\Controllers\SiswasController::class, 'store'])->name('store');
+Route::get('/delete-siswa/{id}', [App\Http\Controllers\SiswasController::class, 'destroy'])->name('delete');
+Route::get('/edit-siswa/{id}', [App\Http\Controllers\SiswasController::class, 'edit'])->name('edit');

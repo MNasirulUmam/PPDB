@@ -19,7 +19,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-        <input type="Text" name="alamat" class="form-control" id="exampleFormControlInput1" value="{{$data->alamt}}">
+        <input type="Text" name="alamat" class="form-control" id="exampleFormControlInput1" value="{{$data->alamat}}">
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Update</button>

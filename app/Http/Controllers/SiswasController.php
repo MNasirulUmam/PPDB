@@ -14,7 +14,7 @@ class SiswasController extends Controller
      */
     public function index()
     {
-        $datas = Siswa::select('nama')->get();
+        $datas = Siswa::all();
         return view('home',compact('datas'));
     }
 
@@ -36,7 +36,9 @@ class SiswasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data               = $request->all();
+        $siswa              = Siswa::create($data);
+        return redirect('/home');
     }
 
     /**
@@ -47,8 +49,8 @@ class SiswasController extends Controller
      */
     public function show($id)
     {
-        $data = Siswa::findOrFail($id);
-        return view('show',compact('data'));
+        // $data = Siswa::findOrFail($id);
+        // return view('show',compact('data'));
     }
 
     /**
@@ -59,7 +61,8 @@ class SiswasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Siswa::findOrFail($id);
+        return view('edit',compact('data'));
     }
 
     /**
@@ -71,7 +74,10 @@ class SiswasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $siswa = Siswa::findOrFail($id); //mencari user berdasarkan id user
+        $data = $request->all(); //menerima request dari view
+        $siswa->update($data); //update data user
+        return redirect('/home'); //kembalikan kel halaman home
     }
 
     /**
@@ -82,6 +88,8 @@ class SiswasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $siswa = Siswa::findOrFail($id);
+        $siswa->delete();
+        return redirect('/home');
     }
 }
