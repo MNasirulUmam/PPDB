@@ -9,7 +9,7 @@
         <input type="Text" name="nama" class="form-control" id="exampleFormControlInput1">
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
+        <label for="exampleFormControlInput1" class="form-label">Tanggal Lahir</label>
         <input type="date" name="tanggal" class="form-control" id="exampleFormControlInput1">
     </div>
     <div class="mb-3">
@@ -21,7 +21,8 @@
         <input type="text" name="alamat" class="form-control" id="exampleFormControlInput1">
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="/home" class="btn btn-primary">Kembali</a>
     </div>
 </form>
 </div>

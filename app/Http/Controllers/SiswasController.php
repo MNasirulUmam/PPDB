@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class SiswasController extends Controller
 {
@@ -14,7 +16,7 @@ class SiswasController extends Controller
      */
     public function index()
     {
-        $datas = Siswa::all();
+        $datas = DB::table('siswas')->paginate(5);
         return view('home',compact('datas'));
     }
 

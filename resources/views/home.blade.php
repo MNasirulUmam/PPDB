@@ -4,15 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+                <a href="{{route('create')}}" type="button" class="btn btn-sm btn-success mb-2">Tambah Siswa</a>
             <div class="card">
-                <a href="{{route('create')}}" type="button" class="btn btn-success">Tambah Siswa</a>
-                <br><br>
                 <table class="table">
                 <thead>
                     <tr>
                     <th scope="col">NO</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Tanggal</th>
+                    <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Asal Sekolah</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Action</th>
@@ -34,6 +33,7 @@
                 </tbody>
                 @endforeach
                 </table>
+                {{$datas->links()}}
             </div>
         </div>
     </div>
