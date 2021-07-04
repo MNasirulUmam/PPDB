@@ -40,7 +40,15 @@ class SiswasController extends Controller
     {
         $data               = $request->all();
         $siswa              = Siswa::create($data);
-        return redirect('/home');
+
+        if($data){
+            //redirect dengan pesan sukses
+            return redirect('/home')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect('/home')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+        // return redirect('/home');
     }
 
     /**
