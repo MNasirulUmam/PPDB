@@ -11,12 +11,20 @@ class SiswasController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     
+    
+
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $datas = DB::table('siswas')->paginate(5);
+        $datas = DB::table('siswas')->paginate(10);
         return view('home',compact('datas'));
     }
 

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::view('/', 'index');
-Route::view('register', 'register');
-Route::view('login', 'login');
+Route::get('/',     [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/daftar',     [App\Http\Controllers\IndexController::class, 'daftar'])->name('daftar');
+Route::post('/daftar',     [App\Http\Controllers\IndexController::class, 'simpan'])->name('simpan');
 
 Auth::routes();
 

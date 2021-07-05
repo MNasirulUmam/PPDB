@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','home')
+@section('title','Index')
 
 @section('content')
     <h1>PPDB</h1>
