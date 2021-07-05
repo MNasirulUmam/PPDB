@@ -38,17 +38,15 @@ class SiswasController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nama'        => 'required|min: 5',
+            'tanggal'     => 'required',
+            'asalsekolah' => 'required|min:5',
+            'alamat'      => 'required|min:5',
+        ]);
         $data               = $request->all();
         $siswa              = Siswa::create($data);
-
-        if($data){
-            //redirect dengan pesan sukses
-            return redirect('/home')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
-            //redirect dengan pesan error
-            return redirect('/home')->with(['error' => 'Data Gagal Disimpan!']);
-        }
-        // return redirect('/home');
+        return redirect('/home');
     }
 
     /**
@@ -84,10 +82,18 @@ class SiswasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'nama'        => 'required|min: 5',
+            'tanggal'     => 'required',
+            'asalsekolah' => 'required|min:5',
+            'alamat'      => 'required|min:5',
+        ]);
         $siswa = Siswa::findOrFail($id); //mencari user berdasarkan id user
         $data = $request->all(); //menerima request dari view
         $siswa->update($data); //update data user
-        return redirect('/home'); //kembalikan kel halaman home
+        return redirect('/home')
+                        ->withErrors($validated)
+                        ->withInput(); //kembalikan kel halaman home
     }
 
     /**
