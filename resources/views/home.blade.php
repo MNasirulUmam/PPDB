@@ -5,10 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
                 <a href="{{route('create')}}" type="button" class="btn btn-sm btn-success mb-2">Tambah Siswa</a>
-                    <div class="form-group mb-">
-                        <input name="keyword" class="form-control form-control-sm" type="text" value="" placeholder="Cari...">
-                    </div>
-                        <button type="submit" class="btn btn-sm btn-secondary ml-2 mb-2">Cari</button>
             <div class="card">
                 <table class="table">
                 <thead>
@@ -31,7 +27,7 @@
                     <td>{{$data->alamat}}</td>
                     <td>
                         <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>
-                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger">Delate</a>
+                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onsubmit="return confrim('yakin hapus data')">Delate</a>
                     </td>
                     </tr>
                 </tbody>
