@@ -5,6 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
                 <a href="{{route('create')}}" type="button" class="btn btn-sm btn-success mb-2">Tambah Siswa</a>
+                    <div class="form-group mb-">
+                        <input name="keyword" class="form-control form-control-sm" type="text" value="" placeholder="Cari...">
+                    </div>
+                        <button type="submit" class="btn btn-sm btn-secondary ml-2 mb-2">Cari</button>
             <div class="card">
                 <table class="table">
                 <thead>
