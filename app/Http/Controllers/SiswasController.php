@@ -24,7 +24,7 @@ class SiswasController extends Controller
 
     public function index()
     {
-        $datas = DB::table('siswas')->paginate(10);
+        $datas = Siswa::latest()->paginate(10);
         return view('home',compact('datas'));
     }
 
@@ -54,7 +54,11 @@ class SiswasController extends Controller
         ]);
         $data               = $request->all();
         $siswa              = Siswa::create($data);
-        return redirect('/home');
+        if($siswa){
+            return redirect()->route('home')->with('success','Item created successfully!');
+        }else{
+            return redirect()->route('home')->with('error','You have no permission for this page!');
+        }
     }
 
     /**
