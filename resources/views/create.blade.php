@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<form action="{{route('store')}}" method="POST">
+<form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nama</label>
@@ -29,6 +29,13 @@
         <label for="exampleFormControlInput1" class="form-label">Alamat</label>
         <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}" id="exampleFormControlInput1">
         @error('alamat')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Gambar</label><br>
+        <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
+        @error('gambar')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

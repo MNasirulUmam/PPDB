@@ -5,6 +5,7 @@ use App\Models\Siswa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class SiswasController extends Controller
@@ -51,7 +52,12 @@ class SiswasController extends Controller
             'tanggal'     => 'required',
             'asalsekolah' => 'required|min:5',
             'alamat'      => 'required|min:5',
+            'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+        //upload image
+        $image = $request->file('gambar');
+        $image->storeAs('public/image', $image->hashName());
+
         $data               = $request->all();
         $siswa              = Siswa::create($data);
         if($siswa){
@@ -99,6 +105,7 @@ class SiswasController extends Controller
             'tanggal'     => 'required',
             'asalsekolah' => 'required|min:5',
             'alamat'      => 'required|min:5',
+            'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $siswa = Siswa::findOrFail($id); //mencari user berdasarkan id user
         $data = $request->all(); //menerima request dari view

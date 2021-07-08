@@ -35,6 +35,7 @@ class IndexController extends Controller
             'tanggal'     => 'required',
             'asalsekolah' => 'required|min:5',
             'alamat'      => 'required|min:5',
+            'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $data               = $request->all();
         $siswa              = Siswa::create($data);
