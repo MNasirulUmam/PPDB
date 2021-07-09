@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-                <a href="{{route('create')}}" type="button" class="btn btn-sm btn-success mb-2">Tambah Siswa</a>
+            <a href="{{route('create')}}" type="button" class="btn btn-sm btn-success mb-2">Tambah Siswa</a>
             <div class="card">
                 <table class="table">
                 <thead>
@@ -27,7 +27,7 @@
                     <td>{{$data->asalsekolah}}</td>
                     <td>{{$data->alamat}}</td>
                     <td class="text-center">
-                        <img src="{{ Storage::url('public/gambar/').$data->gambar }}" class="rounded" style="width: 150px">
+                        <img src="{{ Storage::url('public/image/').$data->gambar }}" class="rounded" style="width: 150px">
                     </td>
                     <td>
                         <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -61,9 +62,9 @@ class SiswasController extends Controller
         $data               = $request->all();
         $siswa              = Siswa::create($data);
         if($siswa){
-            return redirect()->route('home')->with('success','Item created successfully!');
+            return redirect()->route('home')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
-            return redirect()->route('home')->with('error','You have no permission for this page!');
+            return redirect()->route('home')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
@@ -88,7 +89,7 @@ class SiswasController extends Controller
     public function edit($id)
     {
         $data = Siswa::findOrFail($id);
-        return view('edit',compact('data'))->with('success','Data berhasil diedit');;
+        return view('edit',compact('data'))->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -105,14 +106,17 @@ class SiswasController extends Controller
             'tanggal'     => 'required',
             'asalsekolah' => 'required|min:5',
             'alamat'      => 'required|min:5',
-            'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            // 'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $siswa = Siswa::findOrFail($id); //mencari user berdasarkan id user
         $data = $request->all(); //menerima request dari view
         $siswa->update($data); //update data user
-        return redirect('/home')
-                        ->withErrors($validated)
-                        ->withInput(); //kembalikan kel halaman home
+        if($siswa){
+            return redirect()->route('home')->with(['info' => 'Anda menambahkan item baru']);
+        }else{
+            return redirect()->route('home')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+       
     }
 
     /**
@@ -125,6 +129,7 @@ class SiswasController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-        return redirect('/home');
+        return redirect('/home')
+        ->with(['warning' => 'Data Berhasil Hapus']);
     }
 }
