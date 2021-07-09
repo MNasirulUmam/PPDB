@@ -31,7 +31,7 @@
                     </td>
                     <td>
                         <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>
-                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onsubmit="return confrim('yakin hapus data')">Delate</a>
+                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onclick="return confirm('yakin hapus data ?');">Delate</a>
                     </td>
                     </tr>
                 </tbody>
