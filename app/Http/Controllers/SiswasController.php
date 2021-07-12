@@ -132,4 +132,18 @@ class SiswasController extends Controller
         return redirect('/home')
         ->with(['warning' => 'Data Berhasil Hapus']);
     }
+    public function restore($id)
+    {
+
+        $siswa = Siswa::onlyTrashed()->where('id', $id);
+        $siswa->restore();
+
+        if ($siswa) {
+            return redirect('home')->with(['success' => 'Data Berhasil Direstore!']);
+            return redirect('home')->with(['success'  => 'Data Berhasil Direstore!']);
+        } else {
+            return redirect('home')->with(['error' => 'Data Gagal Direstore!']);
+            return redirect('home')->with(['error'    => 'Data Gagal Direstore!']);
+        }
+    }
 }

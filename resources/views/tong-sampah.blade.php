@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('create')}}" type="button" class="btn btn-outline-success mb-2">Tambah Siswa</a>
-            <a href="" type="button" class="btn btn-outline-danger mb-2">Tong Sampah</a>
+            <a href="" class="btn btn-outline-danger" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete All</a>
+            <a href="" class="btn btn-outline-success">Restore All</a>
+            <a href="" class="btn btn-outline-primary">Kembali</a>
             <div class="card">
                 <table class="table">
                 <thead>
