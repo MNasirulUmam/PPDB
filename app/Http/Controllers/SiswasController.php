@@ -132,6 +132,13 @@ class SiswasController extends Controller
         return redirect('/home')
         ->with(['warning' => 'Data Berhasil Hapus']);
     }
+
+    public function getDeleteSiswa()
+    {
+        $datas = Siswa::latest()->paginate(10);
+        return view('tong-sampah', compact('datas'));
+    }
+
     public function restore($id)
     {
 
@@ -146,4 +153,51 @@ class SiswasController extends Controller
             return redirect('home')->with(['error'    => 'Data Gagal Direstore!']);
         }
     }
+
+    public function restoreAll()
+    {
+        
+        $sisw = Siswa::where('user_id', Auth::user()->id)->onlyTrashed();
+        $sisw->restore();
+
+        if ($sisw) {
+            return redirect('/home')
+                                ->with(['success'  => ' Semua Data Berhasil Direstore!']);
+        } else {
+            return redirect('/home')
+                                ->with(['error'    => 'Data Gagal Direstore!']);
+        }
+            
+    }
+
+    public function deletePermanent($id)
+    {
+        
+        $siswa = Siswa::onlyTrashed()->where('id', $id);
+        $siswa->forceDelete();
+
+        if ($siswa) {
+            return redirect('/trash')
+                                ->with(['success'   => 'Data Berhasil Dihapus Permanen!']);
+        } else {
+            return redirect('/trash')
+                                ->with(['error'     => 'Data Gagal Dihapus!']);
+        } 
+    }
+
+    public function deleteAll()
+    {
+
+        $sisw = Siswa::where('user_id', Auth::user()->id)->onlyTrashed();
+        $sisw->forceDelete();
+
+        if ($sisw) {
+            return redirect('/trash')
+                                ->with(['success'   => 'Semua Data Berhasil Dihapus Permanen!']);
+        } else {
+            return redirect('/trash')
+                                ->with(['error'     => 'Data Gagal Dihapus!']);
+        }
+    }
+
 }

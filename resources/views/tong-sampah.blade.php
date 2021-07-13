@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="" class="btn btn-outline-danger" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete All</a>
-            <a href="" class="btn btn-outline-success">Restore All</a>
-            <a href="" class="btn btn-outline-primary">Kembali</a>
+            <a href="" class="btn btn-danger mb-2" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete All</a>
+            <a href="" class="btn btn-success mb-2">Restore All</a>
+            <a href="{{route('home')}}" class="btn btn-primary mb-2">Kembali</a>
             <div class="card">
                 <table class="table">
                 <thead>
@@ -32,8 +32,8 @@
                         <img src="{{ Storage::url('public/image/').$data->gambar }}" class="rounded" style="width: 150px">
                     </td>
                     <td>
-                        <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>
-                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onclick="return confirm('yakin hapus data ?');">Delate</a>
+                        <a href="" class="btn btn-sm btn-primary">Restore</a> 
+                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete</a>
                     </td>
                     </tr>
                 </tbody>

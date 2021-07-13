@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('create')}}" type="button" class="btn btn-outline-success mb-2">Tambah Siswa</a>
-            <a href="" type="button" class="btn btn-outline-danger mb-2">Tong Sampah</a>
+            <a href="{{route('create')}}" type="button" class="btn btn-success mb-2">Tambah Siswa</a>
+            <a href="{{route('trash')}}" type="button" class="btn btn-secondary mb-2">Tong Sampah</a>
             <div class="card">
                 <table class="table">
                 <thead>

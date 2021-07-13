@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/',     [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-Route::get('/daftar',     [App\Http\Controllers\IndexController::class, 'daftar'])->name('daftar');
+Route::get('/daftar',    [App\Http\Controllers\IndexController::class, 'daftar'])->name('daftar');
 Route::post('/daftar',     [App\Http\Controllers\IndexController::class, 'simpan'])->name('simpan');
 
 Auth::routes();
@@ -31,3 +31,4 @@ Route::post('/add-siswa',           [App\Http\Controllers\SiswasController::clas
 Route::get('/delete-siswa/{id}',        [App\Http\Controllers\SiswasController::class, 'destroy'])->name('delete');
 Route::get('/edit-siswa/{id}',              [App\Http\Controllers\SiswasController::class, 'edit'])->name('edit');
 Route::put('/update/{id}',                       [App\Http\Controllers\SiswasController::class, 'update'])->name('update');
+Route::get('/trash',						    [App\Http\Controllers\SiswasController::class, 'getDeleteSiswa'])->name('trash');
