@@ -161,11 +161,9 @@ class SiswasController extends Controller
         $sisw->restore();
 
         if ($sisw) {
-            return redirect('/home')
-                                ->with(['success'  => ' Semua Data Berhasil Direstore!']);
+            return redirect('/home')->with(['success'  => ' Semua Data Berhasil Direstore!']);
         } else {
-            return redirect('/home')
-                                ->with(['error'    => 'Data Gagal Direstore!']);
+            return redirect('/home')->with(['error'    => 'Data Gagal Direstore!']);
         }
             
     }
@@ -177,11 +175,9 @@ class SiswasController extends Controller
         $siswa->forceDelete();
 
         if ($siswa) {
-            return redirect('/trash')
-                                ->with(['success'   => 'Data Berhasil Dihapus Permanen!']);
+            return redirect('/home')->with(['success'   => 'Data Berhasil Dihapus Permanen!']);
         } else {
-            return redirect('/trash')
-                                ->with(['error'     => 'Data Gagal Dihapus!']);
+            return redirect('/home')->with(['error'     => 'Data Gagal Dihapus!']);
         } 
     }
 
@@ -192,11 +188,9 @@ class SiswasController extends Controller
         $sisw->forceDelete();
 
         if ($sisw) {
-            return redirect('/trash')
-                                ->with(['success'   => 'Semua Data Berhasil Dihapus Permanen!']);
+            return redirect('/home')->with(['success'   => 'Semua Data Berhasil Dihapus Permanen!']);
         } else {
-            return redirect('/trash')
-                                ->with(['error'     => 'Data Gagal Dihapus!']);
+            return redirect('/home')->with(['error'     => 'Data Gagal Dihapus!']);
         }
     }
 

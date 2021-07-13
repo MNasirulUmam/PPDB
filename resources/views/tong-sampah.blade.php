@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="" class="btn btn-danger mb-2" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete All</a>
-            <a href="" class="btn btn-success mb-2">Restore All</a>
+            <a href="{{route('deleteAll')}}" class="btn btn-danger mb-2" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete All</a>
+            <a href="{{route('restoreAll')}}" class="btn btn-success mb-2">Restore All</a>
             <a href="{{route('home')}}" class="btn btn-primary mb-2">Kembali</a>
             <div class="card">
                 <table class="table">

@@ -31,4 +31,8 @@ Route::post('/add-siswa',           [App\Http\Controllers\SiswasController::clas
 Route::get('/delete-siswa/{id}',        [App\Http\Controllers\SiswasController::class, 'destroy'])->name('delete');
 Route::get('/edit-siswa/{id}',              [App\Http\Controllers\SiswasController::class, 'edit'])->name('edit');
 Route::put('/update/{id}',                       [App\Http\Controllers\SiswasController::class, 'update'])->name('update');
-Route::get('/trash',						    [App\Http\Controllers\SiswasController::class, 'getDeleteSiswa'])->name('trash');
+Route::get('/trash',						        [App\Http\Controllers\SiswasController::class, 'getDeleteSiswa'])->name('trash');
+Route::get('/restore/{id}',			            [App\Http\Controllers\SiswasController::class, 'restore'])->name('restore');
+Route::get('/restore-all',			                [App\Http\Controllers\SiswasController::class, 'restoreAll'])->name('restoreAll');
+Route::get('/delete/{id}', 			                    [App\Http\Controllers\SiswasController::class, 'deletePermanent'])->name('deletePermanent');
+Route::get('/delete-all',			                            [App\Http\Controllers\SiswasController::class, 'deleteAll'])->name('deleteAll');
