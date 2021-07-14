@@ -129,41 +129,39 @@ class SiswasController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-        return redirect('/home')
-        ->with(['warning' => 'Data Berhasil Hapus']);
+        return redirect('/home')->with(['warning' => 'Data Berhasil Hapus Sementara']);
     }
 
     public function getDeleteSiswa()
     {
-        $datas = Siswa::latest()->paginate(10);
+        $datas = Siswa::onlyTrashed()->paginate(10);
         return view('tong-sampah', compact('datas'));
     }
 
     public function restore($id)
     {
 
-        $siswa = Siswa::onlyTrashed()->where('id', $id);
-        $siswa->restore();
+        $siswas = Siswa::onlyTrashed()->where('id', $id);
+        $siswas->restore();
 
-        if ($siswa) {
-            return redirect('home')->with(['success' => 'Data Berhasil Direstore!']);
-            return redirect('home')->with(['success'  => 'Data Berhasil Direstore!']);
+        if ($siswas) {
+            return redirect('/home')->with(['success' => 'Data Berhasil Direstore!']);
         } else {
-            return redirect('home')->with(['error' => 'Data Gagal Direstore!']);
-            return redirect('home')->with(['error'    => 'Data Gagal Direstore!']);
+            return redirect('/trash')->with(['error' => 'Data Gagal Direstore!']);
+        
         }
     }
 
     public function restoreAll()
     {
         
-        $sisw = Siswa::where('user_id', Auth::user()->id)->onlyTrashed();
+        $sisw = Siswa::onlyTrashed();
         $sisw->restore();
 
         if ($sisw) {
-            return redirect('/home')->with(['success'  => ' Semua Data Berhasil Direstore!']);
+            return redirect('/home')->with(['success'  => 'Semua Data Berhasil Direstore!']);
         } else {
-            return redirect('/home')->with(['error'    => 'Data Gagal Direstore!']);
+            return redirect('/trash')->with(['error'    => 'Data Gagal Direstore!']);
         }
             
     }
@@ -171,20 +169,20 @@ class SiswasController extends Controller
     public function deletePermanent($id)
     {
         
-        $siswa = Siswa::onlyTrashed()->where('id', $id);
-        $siswa->forceDelete();
+        $siswas = Siswa::onlyTrashed()->where('id',$id);
+        $siswas->forceDelete();
 
-        if ($siswa) {
-            return redirect('/home')->with(['success'   => 'Data Berhasil Dihapus Permanen!']);
+        if ($siswas) {
+            return redirect('/trash')->with(['success'   => 'Data Berhasil Dihapus Permanen!']);
         } else {
-            return redirect('/home')->with(['error'     => 'Data Gagal Dihapus!']);
+            return redirect('/trash')->with(['error'     => 'Data Gagal Dihapus!']);
         } 
     }
 
     public function deleteAll()
     {
 
-        $sisw = Siswa::where('user_id', Auth::user()->id)->onlyTrashed();
+        $sisw = Siswa::onlyTrashed();
         $sisw->forceDelete();
 
         if ($sisw) {

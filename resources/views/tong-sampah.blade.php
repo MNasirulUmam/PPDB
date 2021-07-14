@@ -32,8 +32,8 @@
                         <img src="{{ Storage::url('public/image/').$data->gambar }}" class="rounded" style="width: 150px">
                     </td>
                     <td>
-                        <a href="" class="btn btn-sm btn-primary">Restore</a> 
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete</a>
+                        <a href="{{route('restore',[$data->id])}}" class="btn btn-sm btn-primary">Restore</a> 
+                        <a href="{{route('deletePermanent',[$data->id])}}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin Delete Permanen ?');">Delete</a>
                     </td>
                     </tr>
                 </tbody>
