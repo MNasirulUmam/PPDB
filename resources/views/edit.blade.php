@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{route('update',[$data->id])}}" method="POST">
+    <form action="{{route('update',[$data->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -32,6 +32,13 @@
             @error('alamat')
             <div class="alert alert-danger mt-2">{{ $message }}</div>
             @enderror 
+        </div>
+        <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Gambar</label><br>
+        <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
+        @error('gambar')
+        <div class="alert alert-danger mt-2">{{ $message }}</div>
+        @enderror
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-success">Update</button>
