@@ -59,9 +59,17 @@ class SiswasController extends Controller
         $image = $request->file('gambar');
         $image->storeAs('public/image', $image->hashName());
 
-        $data               = $request->all();
-        $siswa              = Siswa::create($data);
-        if($siswa){
+        $data = Siswa::create([
+            'nama'     => $request->nama,
+            'tanggal'   => $request->tanggal,
+            'asalsekolah' =>$request->asalsekolah,
+            'alamat'    => $request->alamat,
+            'image'     => $image->hashName()
+            
+        ]);
+        // $data               = $request->all();
+        // $siswa              = Siswa::create($data);
+        if($data){
             return redirect()->route('home')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             return redirect()->route('home')->with(['error' => 'Data Gagal Disimpan!']);

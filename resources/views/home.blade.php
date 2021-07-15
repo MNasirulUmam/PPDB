@@ -28,11 +28,11 @@
                     <td>{{$data->asalsekolah}}</td>
                     <td>{{$data->alamat}}</td>
                     <td class="text-center">
-                        <img src="{{ Storage::url('public/image/').$data->gambar }}" class="rounded" style="width: 150px">
+                        <img src="{{ asset("storage/" . $data->gambar) }}" class="rounded" style="width: 150px">
                     </td>
                     <td>
                         <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>
-                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onclick="return confirm('yakin hapus data ?');">Delate</a>
+                        <a href="{{route('delete',[$data->id])}}" type="button" class="btn btn-danger" onclick="return confirm('yakin hapus data ?');">Delete</a>
                     </td>
                     </tr>
                 </tbody>

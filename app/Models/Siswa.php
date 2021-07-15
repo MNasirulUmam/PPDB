@@ -17,7 +17,7 @@ class Siswa extends Model
 * @var array
 */
 protected $fillable = [
-    'nama', 'tanggal', 'asalsekolah','alamat'
+    'nama', 'tanggal', 'asalsekolah','alamat','gambar'
 ];
 }
 
