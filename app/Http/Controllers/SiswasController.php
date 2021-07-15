@@ -59,16 +59,16 @@ class SiswasController extends Controller
         $image = $request->file('gambar');
         $image->storeAs('public/image', $image->hashName());
 
-        $data = Siswa::create([
-            'nama'     => $request->nama,
-            'tanggal'   => $request->tanggal,
-            'asalsekolah' =>$request->asalsekolah,
-            'alamat'    => $request->alamat,
-            'image'     => $image->hashName()
+        // $data = Siswa::create([
+        //     'nama'     => $request->nama,
+        //     'tanggal'   => $request->tanggal,
+        //     'asalsekolah' =>$request->asalsekolah,
+        //     'alamat'    => $request->alamat,
+        //     'gambar'     => $image->hashName()
             
-        ]);
-        // $data               = $request->all();
-        // $siswa              = Siswa::create($data);
+        // ]);
+        $data               = $request->all();
+        $siswa              = Siswa::create($data);
         if($data){
             return redirect()->route('home')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
@@ -114,11 +114,40 @@ class SiswasController extends Controller
             'tanggal'     => 'required',
             'asalsekolah' => 'required|min:5',
             'alamat'      => 'required|min:5',
-            // 'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $siswa = Siswa::findOrFail($id); //mencari user berdasarkan id user
-        $data = $request->all(); //menerima request dari view
-        $siswa->update($data); //update data user
+        // $data = $request->all(); //menerima request dari view
+        // $siswa->update($data); //update data user
+        if($request->file('gambar') == "") {
+
+            $siswa->update([
+                'nama'     => $request->nama,
+                'tanggal'   => $request->tanggal,
+                'asalsekolah' =>$request->asalsekolah,
+                'alamat'    => $request->alamat
+                
+            ]);
+    
+        } else {
+    
+            //hapus old image
+            Storage::disk('local')->delete('public/image/'.$siswa->image);
+    
+            //upload new image
+            $image = $request->file('gambar');
+            $image->storeAs('public/image', $image->hashName());
+    
+            $siswa->update([
+                'gambar'     => $image->hashName(),
+                'nama'     => $request->nama,
+                'tanggal'   => $request->tanggal,
+                'asalsekolah' =>$request->asalsekolah,
+                'alamat'    => $request->alamat
+                
+            ]);
+    
+        }
         if($siswa){
             return redirect()->route('home')->with(['info' => 'Anda menambahkan item baru']);
         }else{

@@ -28,7 +28,10 @@
                     <td>{{$data->asalsekolah}}</td>
                     <td>{{$data->alamat}}</td>
                     <td class="text-center">
-                        <img src="{{ asset('storage/' . $data->gambar) }}" class="rounded" style="width: 150px">
+                                            @if (strlen($data->gambar) > 0)
+                                                <img src="{{ asset('image/' . $data->gambar) }}" width="80px">
+                                            @endif
+                        <!-- <img src="{{ Storage::url('public/image/').$data->gambar }} " class="rounded" style="width: 150px"> -->
                     </td>
                     <td>
                         <a href="{{route('edit',[$data->id])}}" type="submit" class="btn btn-primary">Edit</a>

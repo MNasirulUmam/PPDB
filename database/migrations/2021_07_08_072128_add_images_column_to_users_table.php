@@ -14,7 +14,7 @@ class AddImagesColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('siswas', function (Blueprint $table) {
-            $table->binary('gambar')->after('alamat')->nullable();
+            $table->string('gambar')->after('alamat')->nullable();
         });
     }
 
