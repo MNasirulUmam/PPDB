@@ -35,7 +35,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Gambar</label><br>
-        <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar" value="{{ old('gambar') }}" id="exampleFormControlInput1>
+        <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar" value="{{ old('gambar') }}" id="exampleFormControlInput1">
         @error('gambar')
         <div class="alert alert-danger mt-2">{{ $message }}</div>
         @enderror
